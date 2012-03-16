@@ -4,25 +4,36 @@
 
 @interface CDSModel() <CDSProjectsDaoDelegate, CDSStoriesDaoDelegate>
 
+@property (nonatomic, strong) CDSProjectsDao *projectsDao;
+@property (nonatomic, strong) CDSStoriesDao *storiesDao;
 @end
 
 @implementation CDSModel
 
 @synthesize projects, stories;
+@synthesize projectsDao, storiesDao;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.projectsDao = [[CDSProjectsDao alloc] init];
+        self.storiesDao = [[CDSStoriesDao alloc] init];
+    }
+    return self;
+}
 
 - (void)retrieveProjects
 {
-    CDSProjectsDao *projectDao = [[CDSProjectsDao alloc] init];
-    projectDao.delegate = self;
-    [projectDao execute];
+    self.projectsDao.delegate = self;
+    [self.projectsDao execute];
 }
 
 - (void)retrieveStoriesFromProject:(CDSProject *)project
 {
-    CDSStoriesDao *storiesDao = [[CDSStoriesDao alloc] init];
-    storiesDao.delegate = self;
-    storiesDao.projectIdentifier = project.identifier;
-    [storiesDao execute];
+    self.storiesDao.delegate = self;
+    self.storiesDao.projectIdentifier = project.identifier;
+    [self.storiesDao execute];
 }
 
 #pragma mark - CDSProjectsRetrieverDelegate

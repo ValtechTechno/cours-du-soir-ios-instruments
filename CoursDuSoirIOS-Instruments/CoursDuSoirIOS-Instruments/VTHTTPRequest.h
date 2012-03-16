@@ -9,7 +9,7 @@
 
 @interface VTHTTPRequest : NSObject
 
-@property (nonatomic, strong) id <VTHTTPRequestDelegate> delegate;
+@property (nonatomic, weak) id <VTHTTPRequestDelegate> delegate;
 
 - (void)connectToUrl:(NSURL *)aUrl andDelegate:(id<VTHTTPRequestDelegate>)aDelegate;
 - (void)cancel;

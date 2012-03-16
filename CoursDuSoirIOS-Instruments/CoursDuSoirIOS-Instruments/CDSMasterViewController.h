@@ -6,8 +6,8 @@
 @interface CDSMasterViewController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (strong, nonatomic) CDSDetailViewController *detailViewController;
-@property (strong, nonatomic) CDSModel *model;
+@property (nonatomic, strong) CDSDetailViewController *detailViewController;
+@property (nonatomic, strong) CDSModel *model;
 
 - (IBAction)refresh:(id)sender;
 
