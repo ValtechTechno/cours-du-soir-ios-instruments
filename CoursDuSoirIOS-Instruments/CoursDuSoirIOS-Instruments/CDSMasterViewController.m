@@ -77,6 +77,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     CDSProject *project = [_objects objectAtIndex:indexPath.row];
     cell.textLabel.text = project.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"id: %d", project.identifier];
     return cell;
 }
 
