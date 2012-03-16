@@ -16,7 +16,7 @@
     [projectRetriever execute];
 }
 
-- (void)retrievePoints
+- (void)retrieveStories
 {
     
 }

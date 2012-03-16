@@ -9,7 +9,7 @@
 
 @interface CDSProjectsDao : NSObject
 
-@property (nonatomic, weak) id <CDSProjectsDaoDelegate>delegate;
+@property (nonatomic, strong) id <CDSProjectsDaoDelegate>delegate;
 
 - (void)execute;
 

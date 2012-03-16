@@ -6,6 +6,6 @@
 @property (nonatomic, strong) NSArray *points;
 
 - (void)retrieveProjects;
-- (void)retrievePoints;
+- (void)retrieveStories;
 
 @end

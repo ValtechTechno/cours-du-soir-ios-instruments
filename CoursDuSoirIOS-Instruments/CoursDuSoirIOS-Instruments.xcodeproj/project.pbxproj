@@ -98,18 +98,13 @@
 		1C0E77401513407C009A9DB7 /* CoursDuSoirIOS-Instruments */ = {
 			isa = PBXGroup;
 			children = (
+				1C0E77B8151386FB009A9DB7 /* Controllers */,
 				1C0E77B7151384D8009A9DB7 /* Daos */,
-				1C0E77B015137079009A9DB7 /* Operations */,
 				1C0E777915134994009A9DB7 /* Model */,
+				1C0E77B015137079009A9DB7 /* Operations */,
 				1C0E778D15134F18009A9DB7 /* Utils */,
 				1C0E77491513407C009A9DB7 /* CDSAppDelegate.h */,
 				1C0E774A1513407C009A9DB7 /* CDSAppDelegate.m */,
-				1C0E774C1513407C009A9DB7 /* MainStoryboard_iPhone.storyboard */,
-				1C0E774F1513407C009A9DB7 /* MainStoryboard_iPad.storyboard */,
-				1C0E77521513407C009A9DB7 /* CDSMasterViewController.h */,
-				1C0E77531513407C009A9DB7 /* CDSMasterViewController.m */,
-				1C0E77551513407C009A9DB7 /* CDSDetailViewController.h */,
-				1C0E77561513407C009A9DB7 /* CDSDetailViewController.m */,
 				1C0E77411513407C009A9DB7 /* Supporting Files */,
 			);
 			path = "CoursDuSoirIOS-Instruments";
@@ -171,6 +166,19 @@
 				1C0E77AE15136D07009A9DB7 /* CDSProjectsDao.m */,
 			);
 			name = Daos;
+			sourceTree = "<group>";
+		};
+		1C0E77B8151386FB009A9DB7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1C0E774C1513407C009A9DB7 /* MainStoryboard_iPhone.storyboard */,
+				1C0E774F1513407C009A9DB7 /* MainStoryboard_iPad.storyboard */,
+				1C0E77521513407C009A9DB7 /* CDSMasterViewController.h */,
+				1C0E77531513407C009A9DB7 /* CDSMasterViewController.m */,
+				1C0E77551513407C009A9DB7 /* CDSDetailViewController.h */,
+				1C0E77561513407C009A9DB7 /* CDSDetailViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
