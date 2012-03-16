@@ -1,11 +1,11 @@
-#import <UIKit/UIKit.h>
+#import "CDSProject.h"
 
 @interface CDSModel : NSObject
 
 @property (nonatomic, strong) NSArray *projects;
-@property (nonatomic, strong) NSArray *points;
+@property (nonatomic, strong) NSArray *stories;
 
 - (void)retrieveProjects;
-- (void)retrieveStories;
+- (void)retrieveStoriesFromProject:(CDSProject *)project;
 
 @end

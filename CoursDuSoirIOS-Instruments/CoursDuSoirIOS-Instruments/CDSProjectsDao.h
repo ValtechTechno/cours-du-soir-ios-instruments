@@ -2,8 +2,8 @@
 
 @protocol CDSProjectsDaoDelegate <NSObject>
 
-- (void)projectsRetriever:(CDSProjectsDao *)projectsRetriever didRetrievedProjects:(NSArray *)projects;
-- (void)projectsRetriever:(CDSProjectsDao *)projectsRetriever didFailedWithError:(NSError *)error;
+- (void)projectsDao:(CDSProjectsDao *)projectsDao didRetrievedProjects:(NSArray *)projects;
+- (void)projectsDao:(CDSProjectsDao *)projectsDao didFailedWithError:(NSError *)error;
 
 @end
 

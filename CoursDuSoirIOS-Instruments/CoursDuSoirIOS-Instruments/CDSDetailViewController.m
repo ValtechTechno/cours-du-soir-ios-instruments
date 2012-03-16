@@ -10,19 +10,19 @@
 
 @implementation CDSDetailViewController
 
-@synthesize detailItem = _detailItem;
+@synthesize model = _model;
+@synthesize project = _project;
 @synthesize detailDescriptionLabel = _detailDescriptionLabel;
 @synthesize masterPopoverController = _masterPopoverController;
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setProject:(CDSProject *)newProject
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
+    if (_project != newProject) {
+        _project = newProject;
+
+        [_model retrieveStoriesFromProject:self.project];
     }
 
     if (self.masterPopoverController != nil) {
@@ -32,20 +32,21 @@
 
 - (void)configureView
 {
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = self.detailItem.name;
+    if (self.project) {
+        self.detailDescriptionLabel.text = self.project.name;
     }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self configureView];
+    [self.model addObserver:self forKeyPath:@"stories" options:0 context:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [self.model removeObserver:self forKeyPath:@"stories"];    
     self.detailDescriptionLabel = nil;
 }
 
@@ -56,6 +57,13 @@
     } else {
         return YES;
     }
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self configureView];
 }
 
 #pragma mark - Split view

@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self.model addObserver:self forKeyPath:@"projects" options:0 context:nil];
     self.detailViewController = (CDSDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.detailViewController.model = self.model;
 }
 
 - (void)viewDidUnload
@@ -99,7 +100,7 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         CDSProject *project = [_objects objectAtIndex:indexPath.row];
-        self.detailViewController.detailItem = project;
+        self.detailViewController.project = project;
     }
 }
 
@@ -110,7 +111,8 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CDSProject *project = [_objects objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:project];
+        [[segue destinationViewController] setModel:self.model];
+        [[segue destinationViewController] setProject:project];
     }
 }
 

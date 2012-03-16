@@ -1,5 +1,3 @@
-#import <Foundation/Foundation.h>
-
 @class CDSProjectsParserOperation;
 
 @protocol CDSProjectsParserOperationDelegate <NSObject>
@@ -11,7 +9,7 @@
 
 @interface CDSProjectsParserOperation : NSOperation
 
-@property (nonatomic, strong) id <CDSProjectsParserOperationDelegate> delegate;
+@property (nonatomic, weak) id <CDSProjectsParserOperationDelegate> delegate;
 @property (nonatomic, strong) NSData *data;
 
 @end

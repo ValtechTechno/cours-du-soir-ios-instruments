@@ -29,19 +29,19 @@
 
 - (void)httprequest:(CDSHTTPRequest *)request didFailWithError:(NSError *)error
 {
-    [self.delegate projectsRetriever:self didFailedWithError:[NSError errorWithDomain:kUDSDomain code:0 userInfo:nil]];
+    [self.delegate projectsDao:self didFailedWithError:[NSError errorWithDomain:kUDSDomain code:0 userInfo:nil]];
 }
 
 #pragma mark - CDSProjectsParserOperationDelegate
 
 - (void)projectsParserOperation:(CDSProjectsParserOperation *)projectsParser didParsed:(NSArray *)projects
 {
-    [self.delegate projectsRetriever:self didRetrievedProjects:projects];
+    [self.delegate projectsDao:self didRetrievedProjects:projects];
 }
 
 - (void)projectsParserOperation:(CDSProjectsParserOperation *)projectsParser didFailedWithError:(NSError *)error
 {
-    [self.delegate projectsRetriever:self didFailedWithError:error];
+    [self.delegate projectsDao:self didFailedWithError:error];
 }
 
 @end

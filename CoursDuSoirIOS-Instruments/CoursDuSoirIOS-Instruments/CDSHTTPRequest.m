@@ -19,9 +19,8 @@
     self.delegate = aDelegate;
     self.url = aUrl;
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url];
-    self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
+    self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];    
     if (self.urlConnection) {
         self.buffer = [NSMutableData data];
     } else {
@@ -34,7 +33,7 @@
     [self.urlConnection cancel];
 }
 
-#pragma mark - NSURLConnection delegate methods
+#pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [self.buffer setLength:0];   
@@ -57,6 +56,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection { 
     [self.delegate httprequest:self didReceiveData:self.buffer];
 }
+
+#pragma mark - NSURLConnectionDelegate
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [delegate httprequest:self didFailWithError:error];

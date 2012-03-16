@@ -22,6 +22,9 @@
 		1C0E77AF15136D07009A9DB7 /* CDSProjectsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77AE15136D07009A9DB7 /* CDSProjectsDao.m */; };
 		1C0E77B315137090009A9DB7 /* CDSProjectsParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77B215137090009A9DB7 /* CDSProjectsParserOperation.m */; };
 		1C0E77B61513723E009A9DB7 /* CDSProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77B51513723E009A9DB7 /* CDSProject.m */; };
+		1C0E77BB15138993009A9DB7 /* CDSStoriesParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77BA15138993009A9DB7 /* CDSStoriesParserOperation.m */; };
+		1C0E77BE151389B6009A9DB7 /* CDSStoriesDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77BD151389B6009A9DB7 /* CDSStoriesDao.m */; };
+		1C0E77C1151393BC009A9DB7 /* CDSStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77C0151393BC009A9DB7 /* CDSStory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,12 +49,18 @@
 		1C0E778A15134D7F009A9DB7 /* CDSHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSHTTPRequest.h; sourceTree = "<group>"; };
 		1C0E778B15134D7F009A9DB7 /* CDSHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSHTTPRequest.m; sourceTree = "<group>"; };
 		1C0E778E15134F48009A9DB7 /* CDSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSConstants.h; sourceTree = "<group>"; };
-		1C0E77AD15136D07009A9DB7 /* CDSProjectsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CDSProjectsDao.h; sourceTree = "<group>"; };
+		1C0E77AD15136D07009A9DB7 /* CDSProjectsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSProjectsDao.h; sourceTree = "<group>"; };
 		1C0E77AE15136D07009A9DB7 /* CDSProjectsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSProjectsDao.m; sourceTree = "<group>"; };
 		1C0E77B115137090009A9DB7 /* CDSProjectsParserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSProjectsParserOperation.h; sourceTree = "<group>"; };
 		1C0E77B215137090009A9DB7 /* CDSProjectsParserOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSProjectsParserOperation.m; sourceTree = "<group>"; };
 		1C0E77B41513723E009A9DB7 /* CDSProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSProject.h; sourceTree = "<group>"; };
 		1C0E77B51513723E009A9DB7 /* CDSProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSProject.m; sourceTree = "<group>"; };
+		1C0E77B915138993009A9DB7 /* CDSStoriesParserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSStoriesParserOperation.h; sourceTree = "<group>"; };
+		1C0E77BA15138993009A9DB7 /* CDSStoriesParserOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSStoriesParserOperation.m; sourceTree = "<group>"; };
+		1C0E77BC151389B6009A9DB7 /* CDSStoriesDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSStoriesDao.h; sourceTree = "<group>"; };
+		1C0E77BD151389B6009A9DB7 /* CDSStoriesDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSStoriesDao.m; sourceTree = "<group>"; };
+		1C0E77BF151393BC009A9DB7 /* CDSStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSStory.h; sourceTree = "<group>"; };
+		1C0E77C0151393BC009A9DB7 /* CDSStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSStory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +137,8 @@
 				1C0E777B15134ABB009A9DB7 /* CDSModel.m */,
 				1C0E77B41513723E009A9DB7 /* CDSProject.h */,
 				1C0E77B51513723E009A9DB7 /* CDSProject.m */,
+				1C0E77BF151393BC009A9DB7 /* CDSStory.h */,
+				1C0E77C0151393BC009A9DB7 /* CDSStory.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -155,6 +166,8 @@
 			children = (
 				1C0E77B115137090009A9DB7 /* CDSProjectsParserOperation.h */,
 				1C0E77B215137090009A9DB7 /* CDSProjectsParserOperation.m */,
+				1C0E77B915138993009A9DB7 /* CDSStoriesParserOperation.h */,
+				1C0E77BA15138993009A9DB7 /* CDSStoriesParserOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -164,6 +177,8 @@
 			children = (
 				1C0E77AD15136D07009A9DB7 /* CDSProjectsDao.h */,
 				1C0E77AE15136D07009A9DB7 /* CDSProjectsDao.m */,
+				1C0E77BC151389B6009A9DB7 /* CDSStoriesDao.h */,
+				1C0E77BD151389B6009A9DB7 /* CDSStoriesDao.m */,
 			);
 			name = Daos;
 			sourceTree = "<group>";
@@ -254,6 +269,9 @@
 				1C0E77AF15136D07009A9DB7 /* CDSProjectsDao.m in Sources */,
 				1C0E77B315137090009A9DB7 /* CDSProjectsParserOperation.m in Sources */,
 				1C0E77B61513723E009A9DB7 /* CDSProject.m in Sources */,
+				1C0E77BB15138993009A9DB7 /* CDSStoriesParserOperation.m in Sources */,
+				1C0E77BE151389B6009A9DB7 /* CDSStoriesDao.m in Sources */,
+				1C0E77C1151393BC009A9DB7 /* CDSStory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
