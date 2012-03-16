@@ -1,0 +1,7 @@
+L'objectif de ce projet est de montrer des problèmes de : 
+- memory leaks ;
+- zombies ; 
+- abandoned memory ;
+- poor core animation performance
+
+Le but du jeu est de les mettre en évidence grâce à Instruments et de les corriger !
