@@ -21,7 +21,6 @@
 {
     if (_project != newProject) {
         _project = newProject;
-
         [_model retrieveStoriesFromProject:self.project];
     }
 

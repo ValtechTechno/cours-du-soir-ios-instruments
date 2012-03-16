@@ -1,8 +1,8 @@
 #import "CDSProjectsDao.h"
-#import "CDSHTTPRequest.h"
+#import "VTHTTPRequest.h"
 #import "CDSProjectsParserOperation.h"
 
-@interface CDSProjectsDao()<CDSHTTPRequestDelegate, CDSProjectsParserOperationDelegate>
+@interface CDSProjectsDao()<VTHTTPRequestDelegate, CDSProjectsParserOperationDelegate>
 
 @end
 
@@ -12,14 +12,14 @@
 
 - (void)execute
 {
-    CDSHTTPRequest *request = [[CDSHTTPRequest alloc] init];
+    VTHTTPRequest *request = [[VTHTTPRequest alloc] init];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/projects", kUDSBaseURL]];
     [request connectToUrl:url andDelegate:self];
 }
 
 #pragma mark - CDSHTTPRequestDelegate
 
-- (void)httprequest:(CDSHTTPRequest *)request didReceiveData:(NSData *)data
+- (void)httprequest:(VTHTTPRequest *)request didReceiveData:(NSData *)data
 {
     CDSProjectsParserOperation *operation = [[CDSProjectsParserOperation alloc] init];
     operation.delegate = self;
@@ -27,7 +27,7 @@
     [operation start];
 }
 
-- (void)httprequest:(CDSHTTPRequest *)request didFailWithError:(NSError *)error
+- (void)httprequest:(VTHTTPRequest *)request didFailWithError:(NSError *)error
 {
     [self.delegate projectsDao:self didFailedWithError:[NSError errorWithDomain:kUDSDomain code:0 userInfo:nil]];
 }

@@ -1,8 +1,8 @@
 #import "CDSStoriesDao.h"
-#import "CDSHTTPRequest.h"
+#import "VTHTTPRequest.h"
 #import "CDSStoriesParserOperation.h"
 
-@interface CDSStoriesDao()<CDSHTTPRequestDelegate, CDSStoriesParserOperationDelegate>
+@interface CDSStoriesDao()<VTHTTPRequestDelegate, CDSStoriesParserOperationDelegate>
 
 @end
 
@@ -12,14 +12,14 @@
 
 - (void)execute
 {
-    CDSHTTPRequest *request = [[CDSHTTPRequest alloc] init];
+    VTHTTPRequest *request = [[VTHTTPRequest alloc] init];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/projects/%d/stories", kUDSBaseURL, projectIdentifier]];
     [request connectToUrl:url andDelegate:self];
 }
 
 #pragma mark - CDSHTTPRequestDelegate
 
-- (void)httprequest:(CDSHTTPRequest *)request didReceiveData:(NSData *)data
+- (void)httprequest:(VTHTTPRequest *)request didReceiveData:(NSData *)data
 {
     CDSStoriesParserOperation *operation = [[CDSStoriesParserOperation alloc] init];
     operation.delegate = self;
@@ -27,7 +27,7 @@
     [operation start];
 }
 
-- (void)httprequest:(CDSHTTPRequest *)request didFailWithError:(NSError *)error
+- (void)httprequest:(VTHTTPRequest *)request didFailWithError:(NSError *)error
 {
     [self.delegate storiesDao:self didFailedWithError:[NSError errorWithDomain:kUDSDomain code:0 userInfo:nil]];
 }

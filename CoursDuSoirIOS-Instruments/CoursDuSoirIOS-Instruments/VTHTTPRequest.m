@@ -1,6 +1,6 @@
-#import "CDSHTTPRequest.h"
+#import "VTHTTPRequest.h"
 
-@interface CDSHTTPRequest()<NSURLConnectionDataDelegate>
+@interface VTHTTPRequest()<NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSURLConnection *urlConnection;
@@ -8,14 +8,14 @@
 
 @end
 
-@implementation CDSHTTPRequest
+@implementation VTHTTPRequest
 
 @synthesize delegate;
 @synthesize url, urlConnection, buffer;
 
 #pragma mark - Public
 
-- (void)connectToUrl:(NSURL *)aUrl andDelegate:(id<CDSHTTPRequestDelegate>)aDelegate {
+- (void)connectToUrl:(NSURL *)aUrl andDelegate:(id<VTHTTPRequestDelegate>)aDelegate {
     self.delegate = aDelegate;
     self.url = aUrl;
     

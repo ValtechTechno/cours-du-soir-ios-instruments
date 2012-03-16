@@ -18,7 +18,7 @@
 		1C0E77541513407C009A9DB7 /* CDSMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77531513407C009A9DB7 /* CDSMasterViewController.m */; };
 		1C0E77571513407C009A9DB7 /* CDSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77561513407C009A9DB7 /* CDSDetailViewController.m */; };
 		1C0E777C15134ABB009A9DB7 /* CDSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E777B15134ABB009A9DB7 /* CDSModel.m */; };
-		1C0E778C15134D7F009A9DB7 /* CDSHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E778B15134D7F009A9DB7 /* CDSHTTPRequest.m */; };
+		1C0E778C15134D7F009A9DB7 /* VTHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E778B15134D7F009A9DB7 /* VTHTTPRequest.m */; };
 		1C0E77AF15136D07009A9DB7 /* CDSProjectsDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77AE15136D07009A9DB7 /* CDSProjectsDao.m */; };
 		1C0E77B315137090009A9DB7 /* CDSProjectsParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77B215137090009A9DB7 /* CDSProjectsParserOperation.m */; };
 		1C0E77B61513723E009A9DB7 /* CDSProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77B51513723E009A9DB7 /* CDSProject.m */; };
@@ -46,8 +46,8 @@
 		1C0E77561513407C009A9DB7 /* CDSDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDSDetailViewController.m; sourceTree = "<group>"; };
 		1C0E777A15134ABB009A9DB7 /* CDSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSModel.h; sourceTree = "<group>"; };
 		1C0E777B15134ABB009A9DB7 /* CDSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSModel.m; sourceTree = "<group>"; };
-		1C0E778A15134D7F009A9DB7 /* CDSHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSHTTPRequest.h; sourceTree = "<group>"; };
-		1C0E778B15134D7F009A9DB7 /* CDSHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSHTTPRequest.m; sourceTree = "<group>"; };
+		1C0E778A15134D7F009A9DB7 /* VTHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = VTHTTPRequest.h; sourceTree = "<group>"; };
+		1C0E778B15134D7F009A9DB7 /* VTHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTHTTPRequest.m; sourceTree = "<group>"; };
 		1C0E778E15134F48009A9DB7 /* CDSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSConstants.h; sourceTree = "<group>"; };
 		1C0E77AD15136D07009A9DB7 /* CDSProjectsDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSProjectsDao.h; sourceTree = "<group>"; };
 		1C0E77AE15136D07009A9DB7 /* CDSProjectsDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSProjectsDao.m; sourceTree = "<group>"; };
@@ -146,8 +146,8 @@
 		1C0E778915134D6D009A9DB7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1C0E778A15134D7F009A9DB7 /* CDSHTTPRequest.h */,
-				1C0E778B15134D7F009A9DB7 /* CDSHTTPRequest.m */,
+				1C0E778A15134D7F009A9DB7 /* VTHTTPRequest.h */,
+				1C0E778B15134D7F009A9DB7 /* VTHTTPRequest.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 				1C0E77541513407C009A9DB7 /* CDSMasterViewController.m in Sources */,
 				1C0E77571513407C009A9DB7 /* CDSDetailViewController.m in Sources */,
 				1C0E777C15134ABB009A9DB7 /* CDSModel.m in Sources */,
-				1C0E778C15134D7F009A9DB7 /* CDSHTTPRequest.m in Sources */,
+				1C0E778C15134D7F009A9DB7 /* VTHTTPRequest.m in Sources */,
 				1C0E77AF15136D07009A9DB7 /* CDSProjectsDao.m in Sources */,
 				1C0E77B315137090009A9DB7 /* CDSProjectsParserOperation.m in Sources */,
 				1C0E77B61513723E009A9DB7 /* CDSProject.m in Sources */,
