@@ -35,19 +35,25 @@
 - (void)configureView
 {
     // create views that are an 80x80 rect, centred on (0, 0)
-    CGRect frameForViews = CGRectMake(-50, -50, 100, 100);
+    CGRect frameForViews = CGRectMake(-60, -95, 120, 190);
     
     // create six views, each with a different colour. 
     self.carouselViews = [NSMutableArray array];
     int index = [self.model.stories count];
-    while(index--)
+    while (index--)
     {
         CDSStory *story = [self.model.stories objectAtIndex:index];
-        UIView *view = [[UIView alloc] initWithFrame:frameForViews];        
-        view.backgroundColor = [UIColor colorWithRed:(index&4) ? 1.0 : 0.0 green:(index&2) ? 1.0 : 0.0 blue:(index&1) ? 1.0 : 0.0 alpha:1.0];
-        UILabel *label = [[UILabel alloc] initWithFrame:frameForViews];
+        
+		UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"page"]];
+        view.frame = frameForViews;
+		UILabel *label = [[UILabel alloc] initWithFrame:view.bounds];
+		label.backgroundColor = [UIColor clearColor];
+		label.textAlignment = UITextAlignmentCenter;
+		label.font = [label.font fontWithSize:12];
         label.text = story.title;
-        [carouselViews addObject:view];
+		[view addSubview:label];
+        
+        [self.carouselViews addObject:view];
         [self.view addSubview:view];
     }
     
@@ -55,15 +61,16 @@
     [self setCarouselAngle:currentAngle];
 }
 
-- (void)dealloc
-{
-    [self.model removeObserver:self forKeyPath:@"stories"];    
-}
-
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
     [self.model addObserver:self forKeyPath:@"stories" options:0 context:nil];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [self.model removeObserver:self forKeyPath:@"stories"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -89,7 +96,7 @@
         
         // get a location based on the angle
         float xPosition = (self.view.bounds.size.width * 0.5f) + 100.0f * sinf(angleInRadians);
-        float yPosition = (self.view.bounds.size.height * 0.5f) + 30.0f * cosf(angleInRadians);
+        float yPosition = (self.view.bounds.size.height * 0.5f) + 45.0f * cosf(angleInRadians);
         
         // get a scale too; effectively we have:
         //

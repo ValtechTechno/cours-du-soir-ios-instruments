@@ -16,6 +16,7 @@
         return;
     }
     
+    CDSStory *currentStory;
     NSMutableArray *stories = [NSMutableArray array];
     for (NSDictionary *storyAsDictionary in [storiesAsDictionary objectForKey:@"stories"]) {
         CDSStory *story = [[CDSStory alloc] init];
@@ -25,6 +26,11 @@
         story.points = [[storyAsDictionary objectForKey:@"points"] intValue];
         story.priority = [[storyAsDictionary objectForKey:@"priority"] intValue];
         [stories addObject:story];
+        currentStory.nextStory = story;
+        currentStory = story;
+    }
+    if ([stories count] > 1) {
+        currentStory.nextStory = [stories objectAtIndex:0];
     }
     [self.delegate storiesParserOperation:self didParsed:stories];
 }

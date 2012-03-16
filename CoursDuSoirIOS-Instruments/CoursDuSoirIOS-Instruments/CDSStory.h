@@ -5,5 +5,6 @@
 @property (nonatomic, assign) NSUInteger priority;
 @property (nonatomic, assign) NSUInteger points;
 @property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) CDSStory* nextStory;
 
 @end

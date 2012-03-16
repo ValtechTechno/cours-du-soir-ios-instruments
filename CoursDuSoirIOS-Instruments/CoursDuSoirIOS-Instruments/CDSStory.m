@@ -2,6 +2,6 @@
 
 @implementation CDSStory
 
-@synthesize identifier, title, content, points, priority;
+@synthesize identifier, title, content, points, priority, nextStory;
 
 @end
