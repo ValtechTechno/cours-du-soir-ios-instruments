@@ -1,8 +1,11 @@
 #import "CDSDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "CDSStory.h"
 
 @interface CDSDetailViewController ()
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) NSMutableArray* carouselViews;
 
 - (void)configureView;
 
@@ -12,8 +15,8 @@
 
 @synthesize model = _model;
 @synthesize project = _project;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
 @synthesize masterPopoverController = _masterPopoverController;
+@synthesize carouselViews;
 
 #pragma mark - Managing the detail item
 
@@ -31,22 +34,36 @@
 
 - (void)configureView
 {
-    if (self.project) {
-        self.detailDescriptionLabel.text = self.project.name;
+    // create views that are an 80x80 rect, centred on (0, 0)
+    CGRect frameForViews = CGRectMake(-50, -50, 100, 100);
+    
+    // create six views, each with a different colour. 
+    self.carouselViews = [NSMutableArray array];
+    int index = [self.model.stories count];
+    while(index--)
+    {
+        CDSStory *story = [self.model.stories objectAtIndex:index];
+        UIView *view = [[UIView alloc] initWithFrame:frameForViews];        
+        view.backgroundColor = [UIColor colorWithRed:(index&4) ? 1.0 : 0.0 green:(index&2) ? 1.0 : 0.0 blue:(index&1) ? 1.0 : 0.0 alpha:1.0];
+        UILabel *label = [[UILabel alloc] initWithFrame:frameForViews];
+        label.text = story.title;
+        [carouselViews addObject:view];
+        [self.view addSubview:view];
     }
+    
+    currentAngle = lastAngle = 0.0f;
+    [self setCarouselAngle:currentAngle];
 }
 
-- (void)viewDidLoad
+- (void)dealloc
+{
+    [self.model removeObserver:self forKeyPath:@"stories"];    
+}
+
+- (void)viewDidLoad 
 {
     [super viewDidLoad];
     [self.model addObserver:self forKeyPath:@"stories" options:0 context:nil];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    [self.model removeObserver:self forKeyPath:@"stories"];    
-    self.detailDescriptionLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -56,6 +73,102 @@
     } else {
         return YES;
     }
+}
+
+- (void)setCarouselAngle:(float)angle
+{
+    // we want to step around the outside of a circle in
+    // linear steps; work out the distance from one step
+    // to the next
+    float angleToAdd = 360.0f / [self.carouselViews count];
+    
+    // apply positions to all carousel views
+    for (UIView *view in self.carouselViews)
+    {
+        float angleInRadians = angle * M_PI / 180.0f;
+        
+        // get a location based on the angle
+        float xPosition = (self.view.bounds.size.width * 0.5f) + 100.0f * sinf(angleInRadians);
+        float yPosition = (self.view.bounds.size.height * 0.5f) + 30.0f * cosf(angleInRadians);
+        
+        // get a scale too; effectively we have:
+        //
+        //  0.75f   the minimum scale
+        //  0.25f   the amount by which the scale varies over half a circle
+        //
+        // so this will give scales between 0.75 and 1.25. Adjust to suit!
+        float scale = 0.75f + 0.25f * (cosf(angleInRadians) + 1.0);
+        
+        // apply location and scale
+        view.transform = CGAffineTransformScale(CGAffineTransformMakeTranslation(xPosition, yPosition), scale, scale);
+        
+        // tweak alpha using the same system as applied for scale, this time
+        // with 0.3 the minimum and a semicircle range of 0.5
+        view.alpha = 0.3f + 0.5f * (cosf(angleInRadians) + 1.0);
+        
+        // setting the z position on the layer has the effect of setting the
+        // draw order, without having to reorder our list of subviews
+        view.layer.zPosition = scale;
+        
+        // work out what the next angle is going to be
+        angle += angleToAdd;
+    }
+}
+
+#pragma mark - Gesture events
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // if we're not already tracking a touch then...
+    if (!trackingTouch)
+    {
+        // ... track any of the new touches, we don't care which ...
+        trackingTouch = [touches anyObject];
+        
+        // ... and cancel any animation that may be ongoing
+        [animationTimer invalidate];
+        animationTimer = nil;
+        lastAngle = currentAngle;
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // if our touch moved then...
+    if ([touches containsObject:trackingTouch])
+    {
+        // use the movement of the touch to decide
+        // how much to rotate the carousel
+        CGPoint locationNow = [trackingTouch locationInView:self.view];
+        CGPoint locationThen = [trackingTouch previousLocationInView:self.view];
+        
+        lastAngle = currentAngle;
+        currentAngle += (locationNow.x - locationThen.x) * 180.0f / self.view.bounds.size.width;
+        // the 180.0f / self.view.bounds.size.width just says "let a full width of my view
+        // be a 180 degree rotation"
+        
+        // and update the view positions
+        [self setCarouselAngle:currentAngle];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // if our touch ended then...
+    if([touches containsObject:trackingTouch])
+    {
+        // make sure we're no longer tracking it
+        trackingTouch = nil;
+        
+        // and kick off the inertial animation
+        animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(animateAngle) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // treat cancelled touches exactly like ones that end naturally
+    [self touchesEnded:touches withEvent:event];
 }
 
 #pragma mark - KVO
@@ -69,7 +182,6 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }
@@ -79,6 +191,29 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+#pragma mark - Selectors
+
+- (void)animateAngle
+{
+    // work out the difference between the current angle and
+    // the last one, and add that again but made a bit smaller.
+    // This gives us inertial scrolling.
+    float angleNow = currentAngle;
+    currentAngle += (currentAngle - lastAngle) * 0.97f;
+    lastAngle = angleNow;
+    
+    // push the new angle into the carousel
+    [self setCarouselAngle:currentAngle];
+    
+    // if the last angle and the current one are now
+    // really similar then cancel the animation timer
+    if(fabsf(lastAngle - currentAngle) < 0.001)
+    {
+        [animationTimer invalidate];
+        animationTimer = nil;
+    }
 }
 
 @end

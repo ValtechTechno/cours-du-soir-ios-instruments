@@ -2,10 +2,14 @@
 #import "CDSModel.h"
 #import "CDSProject.h"
 
-@interface CDSDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface CDSDetailViewController : UIViewController <UISplitViewControllerDelegate> {
+    float currentAngle;
+    float lastAngle;
+    NSTimer *animationTimer;
+    id trackingTouch;
+}
 
 @property (strong, nonatomic) CDSProject *project;
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (strong, nonatomic) CDSModel *model;
 
 @end

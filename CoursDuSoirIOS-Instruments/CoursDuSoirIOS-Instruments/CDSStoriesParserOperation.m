@@ -24,6 +24,7 @@
         story.content = [storyAsDictionary objectForKey:@"description"];
         story.points = [[storyAsDictionary objectForKey:@"points"] intValue];
         story.priority = [[storyAsDictionary objectForKey:@"priority"] intValue];
+        [stories addObject:story];
     }
     [self.delegate storiesParserOperation:self didParsed:stories];
 }
