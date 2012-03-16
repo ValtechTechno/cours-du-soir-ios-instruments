@@ -1,12 +1,12 @@
-#import "CDSProjectsRetriever.h"
+#import "CDSProjectsDao.h"
 #import "CDSHTTPRequest.h"
 #import "CDSProjectsParserOperation.h"
 
-@interface CDSProjectsRetriever()<CDSHTTPRequestDelegate, CDSProjectsParserOperationDelegate>
+@interface CDSProjectsDao()<CDSHTTPRequestDelegate, CDSProjectsParserOperationDelegate>
 
 @end
 
-@implementation CDSProjectsRetriever
+@implementation CDSProjectsDao
 
 @synthesize delegate;
 

@@ -1,7 +1,7 @@
 #import "CDSModel.h"
-#import "CDSProjectsRetriever.h"
+#import "CDSProjectsDao.h"
 
-@interface CDSModel() <CDSProjectsRetrieverDelegate>
+@interface CDSModel() <CDSProjectsDaoDelegate>
 
 @end
 
@@ -11,7 +11,7 @@
 
 - (void)retrieveProjects
 {
-    CDSProjectsRetriever *projectRetriever = [[CDSProjectsRetriever alloc] init];
+    CDSProjectsDao *projectRetriever = [[CDSProjectsDao alloc] init];
     projectRetriever.delegate = self;
     [projectRetriever execute];
 }
@@ -23,12 +23,12 @@
 
 #pragma mark - CDSProjectsRetrieverDelegate
 
-- (void)projectsRetriever:(CDSProjectsRetriever *)projectsRetriever didRetrievedProjects:(NSArray *)newProjects
+- (void)projectsRetriever:(CDSProjectsDao *)projectsRetriever didRetrievedProjects:(NSArray *)newProjects
 {
     self.projects = newProjects;
 }
 
-- (void)projectsRetriever:(CDSProjectsRetriever *)projectsRetriever didFailedWithError:(NSError *)error
+- (void)projectsRetriever:(CDSProjectsDao *)projectsRetriever didFailedWithError:(NSError *)error
 {
     self.projects = nil;
 }

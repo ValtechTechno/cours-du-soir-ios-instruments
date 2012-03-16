@@ -8,7 +8,9 @@
 - (void)main
 {
     NSError *error = nil;
-    NSDictionary *projectsAsDictionary = [NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingAllowFragments error:&error];
+    NSDictionary *projectsAsDictionary = [NSJSONSerialization JSONObjectWithData:self.data 
+                                                                         options:NSJSONReadingAllowFragments
+                                                                           error:&error];
     if (error) {
         [self.delegate projectsParserOperation:self didFailedWithError:error];
         return;
