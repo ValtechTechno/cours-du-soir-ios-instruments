@@ -115,7 +115,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Projects" id="40">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="refresh" id="dC2-WG-YJ7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="dC2-WG-YJ7">
                             <connections>
                                 <action selector="refresh:" destination="19" id="ML2-r2-5Hb"/>
                             </connections>
