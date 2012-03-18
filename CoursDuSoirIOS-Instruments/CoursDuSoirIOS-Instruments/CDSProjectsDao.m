@@ -31,6 +31,7 @@
 
 - (void)httprequest:(VTHTTPRequest *)request didReceiveData:(NSData *)data
 {
+    self.request = nil;
     self.operation = [[CDSProjectsParserOperation alloc] init];
     self.operation.delegate = self;
     self.operation.data = data;
@@ -39,6 +40,7 @@
 
 - (void)httprequest:(VTHTTPRequest *)request didFailWithError:(NSError *)error
 {
+    self.request = nil;
     [self.delegate projectsDao:self didFailedWithError:[NSError errorWithDomain:kUDSDomain code:0 userInfo:nil]];
 }
 
@@ -46,11 +48,15 @@
 
 - (void)projectsParserOperation:(CDSProjectsParserOperation *)projectsParser didParsed:(NSArray *)projects
 {
+    self.request = nil;
+    self.operation = nil;
     [self.delegate projectsDao:self didRetrievedProjects:projects];
 }
 
 - (void)projectsParserOperation:(CDSProjectsParserOperation *)projectsParser didFailedWithError:(NSError *)error
 {
+    self.request = nil;
+    self.operation = nil;
     [self.delegate projectsDao:self didFailedWithError:error];
 }
 

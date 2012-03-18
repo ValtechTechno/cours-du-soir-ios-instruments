@@ -31,6 +31,7 @@
 
 - (void)httprequest:(VTHTTPRequest *)request didReceiveData:(NSData *)data
 {
+    self.request = nil;
     self.operation = [[CDSStoriesParserOperation alloc] init];
     self.operation.delegate = self;
     self.operation.data = data;
@@ -39,6 +40,7 @@
 
 - (void)httprequest:(VTHTTPRequest *)request didFailWithError:(NSError *)error
 {
+    self.request = nil;
     [self.delegate storiesDao:self didFailedWithError:[NSError errorWithDomain:kUDSDomain code:0 userInfo:nil]];
 }
 
@@ -46,11 +48,15 @@
 
 - (void)storiesParserOperation:(CDSStoriesParserOperation *)projectsParser didParsed:(NSArray *)stories
 {
+    self.request = nil;
+    self.operation = nil;
     [self.delegate storiesDao:self didRetrievedStories:stories];
 }
 
 - (void)storiesParserOperation:(CDSStoriesParserOperation *)projectsParser didFailedWithError:(NSError *)error
 {
+    self.request = nil;
+    self.operation = nil;
     [self.delegate storiesDao:self didFailedWithError:error];
 }
 
