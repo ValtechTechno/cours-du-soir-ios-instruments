@@ -4,27 +4,37 @@
 
 @interface CDSProjectsDao()<VTHTTPRequestDelegate, CDSProjectsParserOperationDelegate>
 
+@property (nonatomic, strong) VTHTTPRequest *request;
+@property (nonatomic, strong) CDSProjectsParserOperation *operation;
+
 @end
 
 @implementation CDSProjectsDao
 
 @synthesize delegate;
+@synthesize request, operation;
 
 - (void)execute
 {
-    VTHTTPRequest *request = [[VTHTTPRequest alloc] init];
+    self.request = [[VTHTTPRequest alloc] init];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/projects", kUDSBaseURL]];
-    [request connectToUrl:url andDelegate:self];
+    [self.request connectToUrl:url andDelegate:self];
+}
+
+- (void)dealloc
+{
+    [self.request cancel];
+    [self.operation cancel];
 }
 
 #pragma mark - CDSHTTPRequestDelegate
 
 - (void)httprequest:(VTHTTPRequest *)request didReceiveData:(NSData *)data
 {
-    CDSProjectsParserOperation *operation = [[CDSProjectsParserOperation alloc] init];
-    operation.delegate = self;
-    operation.data = data;
-    [operation start];
+    self.operation = [[CDSProjectsParserOperation alloc] init];
+    self.operation.delegate = self;
+    self.operation.data = data;
+    [self.operation start];
 }
 
 - (void)httprequest:(VTHTTPRequest *)request didFailWithError:(NSError *)error
