@@ -26,6 +26,9 @@
 		1C0E77BE151389B6009A9DB7 /* CDSStoriesDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77BD151389B6009A9DB7 /* CDSStoriesDao.m */; };
 		1C0E77C1151393BC009A9DB7 /* CDSStory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E77C0151393BC009A9DB7 /* CDSStory.m */; };
 		1C0E77D51513E487009A9DB7 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E77D41513E487009A9DB7 /* page.png */; };
+		1CA472AE15168962005F6F22 /* Icon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CA472AD15168962005F6F22 /* Icon-57x57.png */; };
+		1CA472B015168965005F6F22 /* Icon-57x57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */; };
+		1CA472B21516896A005F6F22 /* Icon-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CA472B11516896A005F6F22 /* Icon-72x72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,9 @@
 		1C0E77BF151393BC009A9DB7 /* CDSStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSStory.h; sourceTree = "<group>"; };
 		1C0E77C0151393BC009A9DB7 /* CDSStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSStory.m; sourceTree = "<group>"; };
 		1C0E77D41513E487009A9DB7 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
+		1CA472AD15168962005F6F22 /* Icon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57x57.png"; sourceTree = "<group>"; };
+		1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57x57@2x.png"; sourceTree = "<group>"; };
+		1CA472B11516896A005F6F22 /* Icon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72x72.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 		1C0E772B1513407C009A9DB7 = {
 			isa = PBXGroup;
 			children = (
+				1CA472B11516896A005F6F22 /* Icon-72x72.png */,
+				1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */,
+				1CA472AD15168962005F6F22 /* Icon-57x57.png */,
 				1C0E77401513407C009A9DB7 /* CoursDuSoirIOS-Instruments */,
 				1C0E77391513407C009A9DB7 /* Frameworks */,
 				1C0E77371513407C009A9DB7 /* Products */,
@@ -254,6 +263,9 @@
 				1C0E774E1513407C009A9DB7 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1C0E77511513407C009A9DB7 /* MainStoryboard_iPad.storyboard in Resources */,
 				1C0E77D51513E487009A9DB7 /* page.png in Resources */,
+				1CA472AE15168962005F6F22 /* Icon-57x57.png in Resources */,
+				1CA472B015168965005F6F22 /* Icon-57x57@2x.png in Resources */,
+				1CA472B21516896A005F6F22 /* Icon-72x72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,11 +371,15 @@
 		1C0E775B1513407C009A9DB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sylvain Rousseau (M22T9CH29G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sylvain Rousseau (M22T9CH29G)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoursDuSoirIOS-Instruments/CoursDuSoirIOS-Instruments-Prefix.pch";
 				INFOPLIST_FILE = "CoursDuSoirIOS-Instruments/CoursDuSoirIOS-Instruments-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "57A3BA65-4F78-4629-8122-47A92581AFEA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "57A3BA65-4F78-4629-8122-47A92581AFEA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -371,11 +387,15 @@
 		1C0E775C1513407C009A9DB7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sylvain Rousseau (M22T9CH29G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sylvain Rousseau (M22T9CH29G)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoursDuSoirIOS-Instruments/CoursDuSoirIOS-Instruments-Prefix.pch";
 				INFOPLIST_FILE = "CoursDuSoirIOS-Instruments/CoursDuSoirIOS-Instruments-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "57A3BA65-4F78-4629-8122-47A92581AFEA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "57A3BA65-4F78-4629-8122-47A92581AFEA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

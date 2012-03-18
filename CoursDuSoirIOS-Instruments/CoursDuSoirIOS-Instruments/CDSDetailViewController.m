@@ -35,6 +35,9 @@
 
 - (void)configureView
 {
+    for (UIView *carouselView in self.carouselViews) {
+        [carouselView removeFromSuperview];
+    }
     CGRect frameForViews = CGRectMake(-60, -95, 120, 190);    
     self.carouselViews = [NSMutableArray array];
     int index = [self.model.stories count];
@@ -51,7 +54,7 @@
 		label.font = [label.font fontWithSize:12];
         label.text = story.title;
 		[view addSubview:label];
-        
+
         [self.carouselViews addObject:view];
         [self.view addSubview:view];
     }
@@ -83,6 +86,8 @@
 
 - (void)setCarouselAngle:(float)angle
 {
+    [NSThread sleepForTimeInterval:.1];
+
     // we want to step around the outside of a circle in
     // linear steps; work out the distance from one step
     // to the next
