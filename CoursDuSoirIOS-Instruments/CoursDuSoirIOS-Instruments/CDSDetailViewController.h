@@ -6,7 +6,6 @@
     float currentAngle;
     float lastAngle;
     NSTimer *animationTimer;
-    id trackingTouch;
 }
 
 @property (strong, nonatomic) CDSProject *project;
