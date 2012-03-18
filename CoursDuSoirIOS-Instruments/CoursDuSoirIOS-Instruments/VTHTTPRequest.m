@@ -13,6 +13,11 @@
 @synthesize delegate;
 @synthesize url, urlConnection, buffer;
 
+- (void)dealloc
+{
+    [self cancel];
+}
+
 #pragma mark - Public
 
 - (void)connectToUrl:(NSURL *)aUrl andDelegate:(id<VTHTTPRequestDelegate>)aDelegate {
