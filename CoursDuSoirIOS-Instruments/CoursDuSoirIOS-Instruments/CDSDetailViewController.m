@@ -4,8 +4,9 @@
 
 @interface CDSDetailViewController ()
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (nonatomic, strong) UIPopoverController *masterPopoverController;
 @property (nonatomic, strong) NSMutableArray* carouselViews;
+@property (nonatomic, strong) id trackingTouchedView;
 
 - (void)configureView;
 
@@ -16,7 +17,7 @@
 @synthesize model = _model;
 @synthesize project = _project;
 @synthesize masterPopoverController = _masterPopoverController;
-@synthesize carouselViews;
+@synthesize carouselViews, trackingTouchedView;
 
 #pragma mark - Managing the detail item
 
@@ -34,17 +35,15 @@
 
 - (void)configureView
 {
-    // create views that are an 80x80 rect, centred on (0, 0)
-    CGRect frameForViews = CGRectMake(-60, -95, 120, 190);
-    
-    // create six views, each with a different colour. 
+    CGRect frameForViews = CGRectMake(-60, -95, 120, 190);    
     self.carouselViews = [NSMutableArray array];
     int index = [self.model.stories count];
+    UIImage *image = [UIImage imageNamed:@"page"];
     while (index--)
     {
         CDSStory *story = [self.model.stories objectAtIndex:index];
         
-		UIView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"page"]];
+		UIView *view = [[UIImageView alloc] initWithImage:image];
         view.frame = frameForViews;
 		UILabel *label = [[UILabel alloc] initWithFrame:view.bounds];
 		label.backgroundColor = [UIColor clearColor];
@@ -127,10 +126,10 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // if we're not already tracking a touch then...
-    if (!trackingTouch)
+    if (!self.trackingTouchedView)
     {
         // ... track any of the new touches, we don't care which ...
-        trackingTouch = [touches anyObject];
+        self.trackingTouchedView = [touches anyObject];
         
         // ... and cancel any animation that may be ongoing
         [animationTimer invalidate];
@@ -142,12 +141,12 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // if our touch moved then...
-    if ([touches containsObject:trackingTouch])
+    if ([touches containsObject:self.trackingTouchedView])
     {
         // use the movement of the touch to decide
         // how much to rotate the carousel
-        CGPoint locationNow = [trackingTouch locationInView:self.view];
-        CGPoint locationThen = [trackingTouch previousLocationInView:self.view];
+        CGPoint locationNow = [self.trackingTouchedView locationInView:self.view];
+        CGPoint locationThen = [self.trackingTouchedView previousLocationInView:self.view];
         
         lastAngle = currentAngle;
         currentAngle += (locationNow.x - locationThen.x) * 180.0f / self.view.bounds.size.width;
@@ -162,10 +161,10 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // if our touch ended then...
-    if([touches containsObject:trackingTouch])
+    if([touches containsObject:self.trackingTouchedView])
     {
         // make sure we're no longer tracking it
-        trackingTouch = nil;
+        self.trackingTouchedView = nil;
         
         // and kick off the inertial animation
         animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(animateAngle) userInfo:nil repeats:YES];
