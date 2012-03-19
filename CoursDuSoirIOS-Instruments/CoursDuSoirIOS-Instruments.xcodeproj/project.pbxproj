@@ -66,9 +66,9 @@
 		1C0E77BF151393BC009A9DB7 /* CDSStory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSStory.h; sourceTree = "<group>"; };
 		1C0E77C0151393BC009A9DB7 /* CDSStory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSStory.m; sourceTree = "<group>"; };
 		1C0E77D41513E487009A9DB7 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
-		1CA472AD15168962005F6F22 /* Icon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57x57.png"; sourceTree = "<group>"; };
-		1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57x57@2x.png"; sourceTree = "<group>"; };
-		1CA472B11516896A005F6F22 /* Icon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72x72.png"; sourceTree = "<group>"; };
+		1CA472AD15168962005F6F22 /* Icon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-57x57.png"; path = "../Icon-57x57.png"; sourceTree = "<group>"; };
+		1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-57x57@2x.png"; path = "../Icon-57x57@2x.png"; sourceTree = "<group>"; };
+		1CA472B11516896A005F6F22 /* Icon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72x72.png"; path = "../Icon-72x72.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +88,6 @@
 		1C0E772B1513407C009A9DB7 = {
 			isa = PBXGroup;
 			children = (
-				1CA472B11516896A005F6F22 /* Icon-72x72.png */,
-				1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */,
-				1CA472AD15168962005F6F22 /* Icon-57x57.png */,
 				1C0E77401513407C009A9DB7 /* CoursDuSoirIOS-Instruments */,
 				1C0E77391513407C009A9DB7 /* Frameworks */,
 				1C0E77371513407C009A9DB7 /* Products */,
@@ -133,7 +130,7 @@
 		1C0E77411513407C009A9DB7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1C0E77D41513E487009A9DB7 /* page.png */,
+				1CA472B81517CA90005F6F22 /* Images */,
 				1C0E77421513407C009A9DB7 /* CoursDuSoirIOS-Instruments-Info.plist */,
 				1C0E77431513407C009A9DB7 /* InfoPlist.strings */,
 				1C0E77461513407C009A9DB7 /* main.m */,
@@ -206,6 +203,17 @@
 				1C0E77561513407C009A9DB7 /* CDSDetailViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1CA472B81517CA90005F6F22 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1C0E77D41513E487009A9DB7 /* page.png */,
+				1CA472B11516896A005F6F22 /* Icon-72x72.png */,
+				1CA472AF15168965005F6F22 /* Icon-57x57@2x.png */,
+				1CA472AD15168962005F6F22 /* Icon-57x57.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

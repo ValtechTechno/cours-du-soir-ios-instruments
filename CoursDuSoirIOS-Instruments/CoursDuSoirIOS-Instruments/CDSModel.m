@@ -1,17 +1,20 @@
 #import "CDSModel.h"
 #import "CDSProjectsDao.h"
 #import "CDSStoriesDao.h"
+#import "CDSStory.h"
 
 @interface CDSModel() <CDSProjectsDaoDelegate, CDSStoriesDaoDelegate>
 
 @property (nonatomic, strong) CDSProjectsDao *projectsDao;
 @property (nonatomic, strong) CDSStoriesDao *storiesDao;
+@property (nonatomic, strong) NSArray *allProjects;
+
 @end
 
 @implementation CDSModel
 
 @synthesize projects, stories;
-@synthesize projectsDao, storiesDao;
+@synthesize projectsDao, storiesDao, allProjects;
 
 - (id)init
 {
@@ -19,6 +22,7 @@
     if (self) {
         self.projectsDao = [[CDSProjectsDao alloc] init];
         self.storiesDao = [[CDSStoriesDao alloc] init];
+        self.allProjects = [NSArray array];
     }
     return self;
 }
@@ -41,6 +45,7 @@
 - (void)projectsDao:(CDSProjectsDao *)projectsDao didRetrievedProjects:(NSArray *)newProjects
 {
     self.projects = newProjects;
+    self.allProjects = [self.allProjects arrayByAddingObjectsFromArray:newProjects];
 }
 
 - (void)projectsDao:(CDSProjectsDao *)projectsDao didFailedWithError:(NSError *)error
