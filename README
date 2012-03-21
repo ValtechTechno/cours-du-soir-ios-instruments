@@ -1,7 +1,9 @@
-L'objectif de ce projet est de montrer des problèmes de : 
-- memory leaks ;
-- zombies ; 
-- abandoned memory ;
-- poor core animation performance
+Test your knowledge of Instrument !
 
-Le but du jeu est de les mettre en évidence grâce à Instruments et de les corriger !
+Using only instruments tools, seek out for:
+- zombies;
+- memory leaks;
+- abandoned memory;
+- poor animation performance
+
+And fix them all !
