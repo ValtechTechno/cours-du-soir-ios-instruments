@@ -25,7 +25,6 @@
 {
     if (_project != newProject) {
         _project = newProject;
-        [_model retrieveStoriesFromProject:self.project];
     }
 
     if (self.masterPopoverController != nil) {
@@ -73,6 +72,12 @@
 {
     [super viewDidUnload];
     [self.model removeObserver:self forKeyPath:@"stories"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_model retrieveStoriesFromProject:self.project];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
